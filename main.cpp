@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
+//#include <cstdlib>
 #include <string.h>
-#include <limits.h>
+#include <limits>
 #include "finalproj.h"
 using namespace std;
 #define MAZEMAX 256
@@ -216,7 +216,7 @@ try {
         cout << path2 << endl;
     }
     else if( moveMax2 == 0 ) {
-        cout << "\nNo start and/or end for robot 2 detected." << endl;
+        cout << "\nNo start or end for robot 2 detected." << endl;
     }
     else {
         cout << "\nNo path exists between start and exit for robot 2." << endl;

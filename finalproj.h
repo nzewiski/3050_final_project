@@ -2,7 +2,7 @@
 #define FINALPROJ_H_INCLUDED
 using namespace std;
 #define MAZEMAX 256
-#define INT_MAX 4000000000
+#define INT_MAX 4000000
 
 class Node{
     private:
@@ -25,23 +25,22 @@ Node::Node() {
     this->row = 0;
     this->col = 0;
     this->visited = 0;
-//    this->u = NULL;
-//    this->d = NULL;
-//    this->l = NULL;
-//    this->r = NULL;
+    this->u = NULL;
+    this->d = NULL;
+    this->l = NULL;
+    this->r = NULL;
     this->vertex(0);
     this->vertexNum = this->vertex(1);
-    cout << this->property << " Node created" << endl;
 }
 Node::Node( string prop, int row, int col ) {
     this->property = prop;
     this->row = row;
     this->col = col;
     this->visited = 0;
-//    this->u = NULL;
-//    this->d = NULL;
-//    this->l = NULL;
-//    this->r = NULL;
+    this->u = NULL;
+    this->d = NULL;
+    this->l = NULL;
+    this->r = NULL;
     this->vertex(0);
     this->vertexNum = this->vertex(1);
 }
@@ -90,7 +89,7 @@ class Graph{
 Graph::Graph( int V, int E ) {
    this->V = V;
    this->E = E;
-   this->edgeArr = (Edge*) malloc( (E+1) * sizeof(Edge) );
+   this->edgeArr = new Edge[E];
 }
 
 void printArr( int dist[], int n ) {
@@ -135,8 +134,11 @@ void printMaze( char Maze[][MAZEMAX] ) {
 }
 string getPath( Node *nodeArr[][MAZEMAX], int distArr[], int endIndex, int endDist ) {
     string path;
+cout << "PATH" << endl;
     int index = endIndex;
+cout << "endIndex " << endIndex << endl;
     int dist = endDist;
+cout << "endDist " << endDist << endl;
     int numNodes = nodeArr[0][0]->vertex(1);
     Node *nodes[numNodes+1];
     int i, j, k;
