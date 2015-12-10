@@ -2,6 +2,7 @@
 #define FINALPROJ_H_INCLUDED
 using namespace std;
 #define MAZEMAX 256
+#define INT_MAX 4000000000
 
 class Node{
     private:
@@ -24,10 +25,10 @@ Node::Node() {
     this->row = 0;
     this->col = 0;
     this->visited = 0;
-    this->u = NULL;
-    this->d = NULL;
-    this->l = NULL;
-    this->r = NULL;
+//    this->u = NULL;
+//    this->d = NULL;
+//    this->l = NULL;
+//    this->r = NULL;
     this->vertex(0);
     this->vertexNum = this->vertex(1);
     cout << this->property << " Node created" << endl;
@@ -37,10 +38,10 @@ Node::Node( string prop, int row, int col ) {
     this->row = row;
     this->col = col;
     this->visited = 0;
-    this->u = NULL;
-    this->d = NULL;
-    this->l = NULL;
-    this->r = NULL;
+//    this->u = NULL;
+//    this->d = NULL;
+//    this->l = NULL;
+//    this->r = NULL;
     this->vertex(0);
     this->vertexNum = this->vertex(1);
 }
@@ -125,10 +126,10 @@ void printMaze( char Maze[][MAZEMAX] ) {
     int i, j;
     for( i = 0 ; i < MAZEMAX ; ++i ) {
         for( j = 0 ; j < MAZEMAX ; ++j ) {
-            if ( Maze[i][j] != NULL )
+            if ( Maze[i][j] )
                 cout << Maze[i][j];
         }
-        if ( Maze[i][j] != NULL )
+        if ( Maze[i][j] )
             cout << endl;
     }
 }

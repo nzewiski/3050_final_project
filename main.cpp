@@ -1,7 +1,7 @@
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <limits.h>
 #include "finalproj.h"
 using namespace std;
