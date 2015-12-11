@@ -11,7 +11,7 @@ using namespace std;
 int main(void) {
     //Variable initializations
     Node* nodeArr[MAZEMAX][MAZEMAX] = {NULL};
-    Node *start1, *end1, *start2, *end2;
+//    Node *start1, *end1, *start2, *end2;
     string path1, path2, filestr;
     char Maze[MAZEMAX][MAZEMAX] = {NULL};
     char hold;
@@ -40,8 +40,9 @@ try {
     cin >> filestr;
 
     // Open file and read into Maze array character by character
-    if( ( fPtr = fopen( filestr.c_str(), "r") ) == NULL )
+    if( ( fPtr = fopen( filestr.c_str(), "r") ) == NULL ) {
         throw error = 103;
+    }
     else {
         cout << "Opening file..." << endl;
         for( row = 0 ; row < MAZEMAX ; ++row ) {
@@ -88,7 +89,7 @@ try {
                 else
                     throw error = 201;
                 Maze[row][col] = Free;
-                start1 = nodeArr[row][col];
+//                start1 = nodeArr[row][col];
                 Start1set = 0;
                 Start1Num = nodeArr[row][col]->vertexNum;
             } //End if
@@ -98,7 +99,7 @@ try {
                 else
                     throw error = 202;
                 Maze[row][col] = Free;
-                end1 = nodeArr[row][col];
+//                end1 = nodeArr[row][col];
                 End1set = 0;
                 End1Num = nodeArr[row][col]->vertexNum;
             } //End if
@@ -108,7 +109,7 @@ try {
                 else
                     throw error = 203;
                 Maze[row][col] = Free;
-                start2 = nodeArr[row][col];
+//                start2 = nodeArr[row][col];
                 Start2set = 0;
                 Start2Num = nodeArr[row][col]->vertexNum;
             } //End if
@@ -118,7 +119,7 @@ try {
                 else
                     throw error = 204;
                 Maze[row][col] = Free;
-                end2 = nodeArr[row][col];
+//                end2 = nodeArr[row][col];
                 End2set = 0;
                 End2Num = nodeArr[row][col]->vertexNum;
             } //End if
@@ -196,8 +197,7 @@ try {
         cout << "\nSource Vertex 1: " << Start1Num << "\nEnd Vertex 1: " << End1Num << endl;
         cout << "Shortest distance from start vertex " << Start1Num << " to end vertex " << End1Num << ": " << moveMax1 << endl;
         path1 = getPath( nodeArr, dist1, End1Num, moveMax1);
-        path1 = rev(path1);
-        cout << path1 << endl;
+        cout << "Shortest Path: " << path1 << endl;
     }
     else if( moveMax1 == 0 ) {
         cout << "\nNo start and/or end for robot 1 detected." << endl;
@@ -212,8 +212,7 @@ try {
         cout << "\nSource Vertex 2: " << Start2Num << "\nEnd Vertex 2: " << End2Num << endl;
         cout << "Shortest distance from start vertex " << Start2Num << " to end vertex " << End2Num << ": " << moveMax2 << endl;
         path2 = getPath( nodeArr, dist2, End2Num, moveMax2);
-        path2 = rev(path2);
-        cout << path2 << endl;
+        cout << "Shortest Path: " << path2 << endl;
     }
     else if( moveMax2 == 0 ) {
         cout << "\nNo start or end for robot 2 detected." << endl;
@@ -223,7 +222,6 @@ try {
     }
 
 }
-
 
 
 //Error catch block
@@ -257,5 +255,15 @@ catch (int error) {
         break;
     }
 }
+
+
+    for( row = 0 ; row < MAZEMAX ; ++row ) {
+        for( col = 0 ; col < MAZEMAX ; ++col ) {
+            delete nodeArr[row][col];
+        }
+    }
+    delete nodeArr;
+    delete Maze;
+    delete fPtr;
     return 0;
 }

@@ -134,11 +134,8 @@ void printMaze( char Maze[][MAZEMAX] ) {
 }
 string getPath( Node *nodeArr[][MAZEMAX], int distArr[], int endIndex, int endDist ) {
     string path;
-cout << "PATH" << endl;
     int index = endIndex;
-cout << "endIndex " << endIndex << endl;
     int dist = endDist;
-cout << "endDist " << endDist << endl;
     int numNodes = nodeArr[0][0]->vertex(1);
     Node *nodes[numNodes+1];
     int i, j, k;
@@ -158,25 +155,25 @@ cout << "endDist " << endDist << endl;
         for( i = 0 ; i < numNodes ; ++i ) {
             if( distArr[i] == dist - 1 ) {
                 if( nodes[i]->u && nodes[i]->u->vertexNum == index ) {
-                    path = path + 'U';
+                    path = 'U' + path;
                     index = i;
                     i = numNodes;
                     --dist;
                 }
                 else if( nodes[i]->d && nodes[i]->d->vertexNum == index ) {
-                    path = path + 'D';
+                    path = 'D' + path;
                     index = i;
                     i = numNodes;
                     --dist;
                 }
                 else if( nodes[i]->l && nodes[i]->l->vertexNum == index ) {
-                    path = path + 'L';
+                    path = 'L' + path;
                     index = i;
                     i = numNodes;
                     --dist;
                 }
                 else if( nodes[i]->r && nodes[i]->r->vertexNum == index ) {
-                    path = path + 'R';
+                    path = 'R' + path;
                     index = i;
                     --dist;
                     i = numNodes;
@@ -186,13 +183,6 @@ cout << "endDist " << endDist << endl;
     }
 
     return path;
-}
-string rev( string s ) {
-    string result = "";
-    for( int i = 0 ; i < s.length() ; ++i ) {
-        result = s[i] + result;
-    }
-    return result;
 }
 
 #endif // FINALPROJ_H_INCLUDED
